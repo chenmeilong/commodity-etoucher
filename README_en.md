@@ -1,12 +1,10 @@
-<h1 align="center">
-    commodity-etoucher
-</h1>
-<p align="center">
-  <strong>commodity-etoucher is an AI keyer that implements automatic keying, foreground background blending, and also supports custom style generation.</strong>
-</p>
+<div align="center">
+<h1>commodity-etoucher</h1>
+[English](README_en.md) | [简体中文](README.md)
+</div>
+<strong>commodity-etoucher is an AI keyer that implements automatic keying, foreground background blending, and also supports custom style generation.</strong>
 
-
-[English](/README_en.md) [中文](/README.md)
+<hr>
 
 > This project originated from the 19 Alibaba 1688 Image Algorithm Competition. For the demo video address, please go to! [my blog](http://img.cmlt.fun/article/fcn演示.mp4) to view
 
@@ -17,7 +15,7 @@
 - Generate style image
 - Local Client
 - Web Client
-![](http://img.cmlt.fun/article/20230617144416.png)
+![](readme.assets/20230617144416.png)
 
 ## Update
 - using Skip FCN, using the last 5 layers of VGG19 FEATURE MAP as FCN input to improve model accuracy;
@@ -60,22 +58,22 @@ Execute in the WEB/img directory to start the Django backend service
 ## Technical framework
 ### YOLO model to complete the positioning of commodity images
 ![](http://img.cmlt.fun/article/20230617151406.png)
-![](http://img.cmlt.fun/article/20230617151429.png)
+![](readme.assets/20230617151429.png)
 
 ### FCN model completes segmentation of product images
-![](http://img.cmlt.fun/article/20230617151742.png)
-![](http://img.cmlt.fun/article/20230617151812.png)
+![](readme.assets/20230617151742.png)
+![](readme.assets/20230617151812.png)
 
 ### Gram matrix to implement style migration
-![](http://img.cmlt.fun/article/20230617151855.png)
+![](readme.assets/20230617151855.png)
 
 ## Image edge gradient transparency algorithm
 Using 2*2 filter traversing mask to find image edges, there are 16 cases in total, here only the following 8 cases are considered as valid edges, i.e. top, bottom, left, right, top left, top right, bottom left, bottom right. Take the case of the upper left corner of the figure below as an example: at this time, the 2*2 filter traversal case, the yellow ball represents the position of the current traversal pixel, fixed to the right, extending 1pix pixel downward, consisting of a 2*2 area; the upper white and lower black means that this is the upper edge.
-![](http://img.cmlt.fun/article/20230617152620.png)
+![](readme.assets/20230617152620.png)
 After the corresponding edge is detected in the mask map, the transparency of the area (3*3) corresponding to the original core (the blob in the map) is modified to be gradually transparent, and the same is done for the other directions.
-![](http://img.cmlt.fun/article/20230617153343.png)
+![](readme.assets/20230617153343.png)
 The core transparent areas are 3*3, 5*5, 7*7 edge images respectively, and the transparent areas can enhance the integration with the new background.
-![](http://img.cmlt.fun/article/20230617153408.png)
+![](readme.assets/20230617153408.png)
 
 ## To be done
 - [ ] Due to occlusion of commodity images and algorithm flaws. Repair using GAN adversarial neural network;
