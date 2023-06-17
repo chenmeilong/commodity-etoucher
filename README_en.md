@@ -1,7 +1,8 @@
 <div align="center">
 <h1>commodity-etoucher</h1>
-[English](README_en.md) | [简体中文](README.md)
+<a href="./README_en.md">English</a>|<a href="./README.md">简体中文</a>
 </div>
+
 <strong>commodity-etoucher is an AI keyer that implements automatic keying, foreground background blending, and also supports custom style generation.</strong>
 
 <hr>

@@ -1,6 +1,6 @@
 <div align="center">
 <h1>commodity-etoucher</h1>
-[English](README_en.md) | [简体中文](README.md)
+<a href="./README_en.md">English</a>|<a href="./README.md">简体中文</a>
 </div>
 <strong>commodity-etoucher是一个AI抠图器，实现自动抠图，前景背景融合，还支持自定义风格生成。</strong>
 
