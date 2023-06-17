@@ -1,0 +1,6 @@
+classes=1
+train=data/train.txt
+valid=data/test.txt
+names=data/bag.names
+backup=backup/
+eval=coco

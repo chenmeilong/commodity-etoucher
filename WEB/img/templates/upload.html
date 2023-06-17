@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于FCN语义分割模型商品图像提取</title>
+    <link rel="shortcut icon" href="/static/hrbu_img/hrbu.ico">
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css"/>
+    <style>
+
+         .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input{
+            position:absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
+
+        .btn1{
+            display: inline-block;
+            padding: 5px 15px;
+            background: darkgoldenrod;
+            color: white;
+            cursor: pointer;
+        }
+           .btn2{
+            display: inline-block;
+            padding: 5px 15px;
+            background: orange;
+            color: white;
+            cursor: pointer;
+        }
+        .content{
+            width: 700px;
+            padding: 25px 50px;
+            margin: 25px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow:0px 0px 10px #888;
+        }
+
+    </style>
+</head>
+<body style="padding: 30px" class="content">
+    <div align="center"style="position: relative">
+        <img class="center-block" src="/static/hrbu_img/hrbu.png" width="75" height="75"><h3>基于FCN语义分割模型商品图像提取</h3>
+        <iframe style="display: none" id="iframe1" name="ifra1"></iframe>
+        <form id="fm1" action="/upload_img.html/" method="POST" enctype="multipart/form-data" target="ifra1">
+        {% csrf_token %}
+{#            <input type="text" name="user" />#}
+              <div>
+                  <p>请选择生成模式：
+                <span style="padding:5px 15px"><input type="radio" name="sty" value="0" checked="checked"/>白底</span>
+                <span style="padding:5px 15px"><input type="radio" name="sty" value="1"/>简约</span>
+                <span style="padding:5px 15px"><input type="radio" name="sty" value="2"/>古典</span>
+                <span style="padding:5px 15px"><input type="radio" name="sty" value="3"/>水墨</span></p>
+              </div>
+            <div style="text-align:center;display:inline-block;width:20px;padding: 5px 15px;top: 159px;left: 174px;right: 100px;bottom: 100px;position: absolute;">
+                <button class="btn btn-success fileinput-button" >
+                    <span>选择图片</span>
+                    <input type="file" name="k3" onchange="uploadFile()" />
+                </button>
+            </div>
+        </form>
+        <div  style="text-align:center;display:inline-block;padding: 5px -6px;top: 163px;left: 272px;right: 100px;bottom: 100px;position: absolute;width: 186px;">
+                <button class="btn1">抠图预览</button>
+                <button style="padding:5px 15px" class="btn2"  onclick="window.location.href='{% url 'download' %}'">下载图片</button>
+        </div>
+
+        <div class="content" id="preview" style="position: relative; top: 22px; overflow: auto; margin-left: auto; margin-right: auto; height: 350px; width: 600px;">
+        </div>
+    </div>
+<script src="/static/js/jquery-3.4.1.js"></script>
+
+<script>
+    function uploadFile() {
+        document.getElementById('iframe1').onload = reloadIframe1;
+        document.getElementById('fm1').submit();
+    }
+    function reloadIframe1() {
+        var content = this.contentWindow.document.body.innerHTML;
+        var obj = JSON.parse(content);
+        console.log("OK");    //obj.data 获取后端图片的路径
+        var tag=document.createElement("img");
+        tag.src='/'+obj.data;           //不加  '/'  是个大坑
+        tag.width = 300;
+        tag.height=300;
+        //tag.src='static/fcn_img'+obj.data;           //不加  '/'  是个大坑
+        //console.log(tag);
+        //$("#preview").empty().append(tag);  //先清空内容再添加
+         $(".btn1").click(function(){
+        //console.log(obj.data);
+             $("#preview").empty().append(tag);  //先清空内容再添加
+        })
+    }
+
+
+</script>
+</body>
+</html>

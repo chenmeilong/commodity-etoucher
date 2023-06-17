@@ -1,0 +1,27 @@
+readme.txt
+
+# cache
+__pycache__
+
+# Distribution / packaging
+.Python
+build/
+dist/
+
+
+# Django stuff:
+*.log
+db.sqlite3
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+
+# Environments
+.env
+
+# mypy
+.idea
+
+# vscode
+.vscode
