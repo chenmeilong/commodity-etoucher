@@ -2,11 +2,11 @@
 <h1>commodity-etoucher</h1>
 <a href="./README_en.md">English</a>|<a href="./README.md">简体中文</a>
 </div>
-<strong>commodity-etoucher是一个AI抠图器，实现自动抠图，前景背景融合，还支持自定义风格生成。</strong>
+<strong>commodity-etoucher是一个AI抠图器，实现自动抠图，前景背景融合，还支持自定义风格生成。还支持在线和离线部署方式</strong>
 
 <hr>
 
-> 本项目源于19年阿里巴巴1688图像算法大赛。演示视频地址请到[我的博客](http://img.cmlt.fun/article/fcn演示.mp4)查看
+> 本项目源于19年阿里巴巴1688图像算法大赛。演示视频地址请到[我的博客](https://mileschen.cn/2019/12/08/AI%E5%95%86%E5%93%81%E4%BF%AE%E5%9B%BE%E5%99%A8/)查看
 
 ## 功能
 - 生成商品白底图
